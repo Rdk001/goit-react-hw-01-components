@@ -1,41 +1,53 @@
-// import PropTypes from 'prop-types';
-import css from './Profile.module.css';
+import PropTypes from 'prop-types';
+import {
+  Card,
+  Description,
+  Avatar,
+  Name,
+  Stats,
+  Tag,
+  Location,
+  Item,
+  Quantity,
+  Label,
+} from './Profile.styled';
+
 const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={avatar} alt="User avatar" className={css.avatar} />
-        <p className={css.name}>{username}</p>
-        <p className={css.tag}>{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+    <Card>
+      <Description>
+        <Avatar src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <Tag>{tag}</Tag>
+        <Location>{location}</Location>
+      </Description>
 
-      <ul className={css.stats}>
-        <li className={css.item}>
-          <span className={css.lable}>Followers</span>
-          <span className={css.quantity}>{stats.followers}</span>
-        </li>
-        <li className={css.item}>
-          <span className={css.lable}>Views</span>
-          <span className={css.quantity}>{stats.views}</span>
-        </li>
-        <li className={css.item}>
-          <span className={css.lable}>Likes</span>
-          <span className={css.quantity}>{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <Item>
+          <Label>Followers</Label>
+          <Quantity>{stats.followers}</Quantity>
+        </Item>
+        <Item>
+          <Label>Views</Label>
+          <Quantity>{stats.views}</Quantity>
+        </Item>
+        <Item>
+          <Label>Likes</Label>
+          <Quantity>{stats.likes}</Quantity>
+        </Item>
+      </Stats>
+    </Card>
   );
 };
-// Profile.propTypes = {
-//   avatar: PropTypes.string.isRequired,
-//   username: PropTypes.string.isRequired,
-//   tag: PropTypes.string.isRequired,
-//   location: PropTypes.string.isRequired,
-//   stats: PropTypes.arrayOf({
-//     followers: PropTypes.number.isRequired,
-//     views: PropTypes.number.isRequired,
-//     likes: PropTypes.number.isRequired,
-//   }),
-// };
+Profile.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  stats: PropTypes.exact({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }),
+};
 export default Profile;
