@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
-
+const getRandomHexColor = () => {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+};
 const Section = styled.section`
   margin-top: 60px;
   text-align: center;
@@ -18,7 +20,7 @@ const StatList = styled.ul`
 const Item = styled.li`
   width: 100px;
   height: 50px;
-  background-color: gainsboro;
+  background-color: ${getRandomHexColor};
   display: flex;
   flex-direction: column;
   border: 1px solid black;
